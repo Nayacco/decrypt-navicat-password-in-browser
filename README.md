@@ -1,4 +1,4 @@
-# 🌐 Navicat Password Decryption in Pure Browser Environment
+# 🌐 Navicat Password Decryption in Browser
 
 ## English Version
 
