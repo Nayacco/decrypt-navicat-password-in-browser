@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Decrypt Navicat Passwords in Browser | Secure and Private</title>
+    <meta name="description" content="Securely decrypt Navicat passwords directly in your browser without sending any requests. Pure browser implementation ensures your passwords remain private.">
+    <meta name="keywords" content="Navicat, password decryption, browser-based decryption, secure, private, no requests">
+    <meta name="author" content="GoldSubmarine">
+    <link rel="canonical" href="https://github.com/GoldSubmarine/decrypt-navicat-password-in-browser">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        label, input, button, h2 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        input {
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            margin: 10px auto;
+            display: block;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #decrypted {
+            font-weight: bold;
+            color: #4CAF50;
+            margin-top: 20px;
+        }
+        .github-link {
+            margin-top: 20px;
+            display: inline-block;
+            font-size: 1.2em;
+            color: #333;
+            text-decoration: none;
+        }
+        .github-link:hover {
+            text-decoration: underline;
+        }
+        .github-logo {
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+    </style>
+    <script>
+      async function decryptStringForNCX(ciphertext) {
+        try {
+          const keyMaterial = new TextEncoder().encode("libcckeylibcckey");
+          const iv = new TextEncoder().encode("libcciv libcciv ");
+          const key = await crypto.subtle.importKey("raw", keyMaterial, { name: "AES-CBC" }, false, [
+            "encrypt",
+            "decrypt",
+          ]);
+          const encryptedBytes = new Uint8Array(ciphertext.match(/.{1,2}/g).map((byte) => parseInt(byte, 16)));
+          const decrypted = await crypto.subtle.decrypt({ name: "AES-CBC", iv: iv }, key, encryptedBytes);
+          return new TextDecoder().decode(decrypted);
+        } catch (e) {
+          console.error(e);
+          return "";
+        }
+      }
+
+      async function handleDecrypt() {
+        const ciphertext = document.getElementById("ciphertext").value;
+        const decryptedText = await decryptStringForNCX(ciphertext);
+        document.getElementById("decrypted").innerText = decryptedText;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>🔍 Decrypt Navicat Passwords in Browser 🔍</h1>
+    <p>🚀 Execute in the browser without sending any requests. 🚀<br>🚀 纯浏览器中执行，不会发送任何请求 🚀</p>
+    <label for="ciphertext">🔐 Enter Encrypted Text:</label>
+    <input type="text" id="ciphertext" placeholder="Enter your encrypted text here..." />
+    <button onclick="handleDecrypt()">🔓 Decrypt</button>
+    <h2>📜 Decrypted Text:</h2>
+    <p id="decrypted">Your decrypted text will appear here.</p>
+    <a class="github-link" href="https://github.com/GoldSubmarine/decrypt-navicat-password-in-browser" target="_blank">
+        <img class="github-logo" src="https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/svg/mark-github.svg" alt="GitHub Logo" width="30" height="30"/>
+        View on GitHub
+    </a>
+  </body>
+</html>
