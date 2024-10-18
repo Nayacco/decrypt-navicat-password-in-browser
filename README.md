@@ -26,7 +26,7 @@ To decrypt a Navicat password, you first need to export and obtain the encrypted
 
 **You can directly visit the following link to perform the decryption without cloning the repository:**
 
-👉 [https://GoldSubmarine.github.io/decrypt-navicat-password-in-browser](https://GoldSubmarine.github.io/decrypt-navicat-password-in-browser) 👈
+👉 [https://Nayacco.github.io/decrypt-navicat-password-in-browser](https://Nayacco.github.io/decrypt-navicat-password-in-browser) 👈
 
 Alternatively, you can:
 1. Clone or download this repository.
@@ -65,7 +65,7 @@ All decryption processes are handled locally within your browser. Your password 
 
 **您可以直接访问以下链接进行解密，无需克隆仓库：**
 
-👉 [https://GoldSubmarine.github.io/decrypt-navicat-password-in-browser](https://GoldSubmarine.github.io/decrypt-navicat-password-in-browser) 👈
+👉 [https://Nayacco.github.io/decrypt-navicat-password-in-browser](https://Nayacco.github.io/decrypt-navicat-password-in-browser) 👈
 
 或者，您也可以：
 1. 克隆或下载此仓库。
